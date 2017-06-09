@@ -1,31 +1,26 @@
 import { START, STOP } from '../utilities/constants'
-
-const markers = {}
+import { internalStart, internalEnd, giveMeAllMeasures } from './markGenerator'
 
 export function getStartLabel (label) {
   return `${label}_${START}`
 }
 
-export function allowed () {
-  return typeof window !== 'undefined'
+export let start = () => {}
+export let stop = () => {}
+
+
+export function recordingStart () {
+  start = internalStart;
+  stop = internalEnd;
 }
 
-export function precise () {
-  return typeof window.performance !== 'undefined'
-}
-
-export function start (label) {
-  markers[`${label}_${START}`] = label
-  performance.mark(label)
-}
-
-export function end (label) {
-  markers[`${label}_${STOP}`] = label
-  performance.mark(label)
+export function recordingStop () {
+  start = () => {};
+  stop = () => {};
 }
 
 export function getMeasures () {
-
+  return giveMeAllMeasures()
 }
 
 export function getMeasure (label) {
