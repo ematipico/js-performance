@@ -1,6 +1,5 @@
 import { START, STOP } from '../utilities/constants'
 
-const markers = {}
 const labels = {};
 const internalPerformance = {
   mark (label) {
@@ -12,41 +11,34 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 export function internalStart  (label) {
-  const newLabel = generateUniqueLabel(label);
-  markers[newLabel] = label
-  performance.mark(label)
+  labels[label] = {
+    start: label +'_'+ START
+  }
+  performance.mark(label +'_'+ START)
 }
 
 export function internalEnd (label) {
-  markers[`${label}_${STOP}`] = label
-  performance.mark(label)
+  labels[label]['stop'] = label +'_'+ STOP
+  performance.mark(label +'_'+ STOP)
 }
 
 export function giveMeAllMeasures() {
-  const measures = []
+  for (const label in labels) {
+    const originalLabel = labels[label];
+    const startLabel = originalLabel.start;
+    const stopLabel = originalLabel.stop;
+    try {
+      performance.measure(label, startLabel, stopLabel);
+    } catch (e) {
+      throw new Error('JS Performance is trying access to marker that does not exist')
+    }
 
-  for (const label in markers) {
-    const originalLabel = markers[label];
-    const marker = performance.getEntriesByName(originalLabel, 'mark')
-    console.log(marker)
+
+
+
   }
+  const measures = performance.getEntitiesByType('measure')
 
 
   return measures
-}
-let counter = 1;
-
-function getCounter () {
-  counter += 1;
-  return counter;
-}
-
-export function generateUniqueLabel (label) {
-  const uniqueLabel = label + '_' + getCounter()
-  if (!labels[uniqueLabel]) {
-    labels[uniqueLabel] = label;
-    return uniqueLabel;
-  }  else {
-    return generateUniqueLabel(uniqueLabel);
-  }
 }

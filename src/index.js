@@ -16,7 +16,7 @@ export function stopRecording () {
 }
 
 export function allMeasures () {
-  getMeasures()
+  return getMeasures()
 }
 
 /**

@@ -1,46 +1,35 @@
+var START = 'START';
 var STOP = 'STOP';
 
-var markers = {};
 var labels = {};
 
 
 function internalStart(label) {
-  var newLabel = generateUniqueLabel(label);
-  markers[newLabel] = label;
-  performance.mark(label);
+  labels[label] = {
+    start: label + '_' + START
+  };
+  performance.mark(label + '_' + START);
 }
 
 function internalEnd(label) {
-  markers[label + '_' + STOP] = label;
-  performance.mark(label);
+  labels[label]['stop'] = label + '_' + STOP;
+  performance.mark(label + '_' + STOP);
 }
 
 function giveMeAllMeasures() {
-  var measures = [];
-
-  for (var label in markers) {
-    var originalLabel = markers[label];
-    var marker = performance.getEntriesByName(originalLabel, 'mark');
-    console.log(marker);
+  for (var label in labels) {
+    var originalLabel = labels[label];
+    var startLabel = originalLabel.start;
+    var stopLabel = originalLabel.stop;
+    try {
+      performance.measure(label, startLabel, stopLabel);
+    } catch (e) {
+      throw new Error('JS Performance is trying access to marker that does not exist');
+    }
   }
+  var measures = performance.getEntitiesByType('measure');
 
   return measures;
-}
-var counter = 1;
-
-function getCounter() {
-  counter += 1;
-  return counter;
-}
-
-function generateUniqueLabel(label) {
-  var uniqueLabel = label + '_' + getCounter();
-  if (!labels[uniqueLabel]) {
-    labels[uniqueLabel] = label;
-    return uniqueLabel;
-  } else {
-    return generateUniqueLabel(uniqueLabel);
-  }
 }
 
 var start = function start() {};
@@ -93,7 +82,7 @@ function stopRecording() {
 }
 
 function allMeasures() {
-  getMeasures();
+  return getMeasures();
 }
 
 /**

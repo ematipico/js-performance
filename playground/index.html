@@ -18,6 +18,7 @@
 
     <script src="js.performance.umd.js"></script>
     <script>
+
         jsPerf.startRecording()
         jsPerf.startMark('first')
         jsPerf.startMark('second')
@@ -29,7 +30,10 @@
             jsPerf.endMark('third')
             jsPerf.endMark('fourth')
             jsPerf.stopRecording()
+
+            jsPerf.allMeasures()
         }, 800)
+
     </script>
 </body>
 </html>
