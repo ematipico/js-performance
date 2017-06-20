@@ -1,5 +1,5 @@
 import { START, STOP } from '../utilities/constants'
-import { internalStart, internalEnd, giveMeAllMeasures } from './markGenerator'
+import { internalStart, internalEnd, giveMeAllMeasures } from './markerGenerator'
 
 export function getStartLabel (label) {
   return `${label}_${START}`

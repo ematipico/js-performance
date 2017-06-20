@@ -18,5 +18,5 @@ export default {
       'process.env.NODE_ENV': JSON.stringify('production')
     })
   ],
-  dest: 'bundle.js' // equivalent to --output
+  dest: 'dist/js.performance.min.js' // equivalent to --output
 }

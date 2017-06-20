@@ -1,4 +1,4 @@
-import { start, end, recordingStart, recordingStop } from './engine'
+import { recordingStart, recordingStop, getMeasures, start, stop } from './engine'
 import { support } from './utilities'
 
 /**
@@ -15,6 +15,10 @@ export function stopRecording () {
   recordingStop()
 }
 
+export function allMeasures () {
+  getMeasures()
+}
+
 /**
  * [mark description]
  * @param  {[type]} labelToMarkWith [description]
@@ -22,7 +26,7 @@ export function stopRecording () {
  */
 export function startMark (labelToMarkWith) {
   start(labelToMarkWith)
-  if (process.NODE_ENV.env !== 'production') {
+  if (process.env.NODE_ENV !== 'production') {
     return labelToMarkWith
   }
 }
@@ -33,8 +37,8 @@ export function startMark (labelToMarkWith) {
  * @return {[type]}                 [description]
  */
 export function endMark (labelToMarkWith) {
-  end(labelToMarkWith)
-  if (process.NODE_ENV.env !== 'production') {
+  stop(labelToMarkWith)
+  if (process.env.NODE_ENV !== 'production') {
     return labelToMarkWith
   }
 }

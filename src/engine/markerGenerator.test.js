@@ -1,5 +1,5 @@
 import test from 'ava'
-import { giveMeAllMeasures } from './markGenerator'
+import { giveMeAllMeasures } from './markerGenerator'
 
 test('giveMeAllMeasures return all my measures', t => {
   const measures = giveMeAllMeasures()
