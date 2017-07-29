@@ -28,7 +28,7 @@ Import the library in the way of prefer most, from your browser
 Or straight inside your modules if you are using bundler such as webpack or rollup
 
 ```javascript
-import { startRecording } from 'js-performance'
+import { startRecording } from 'js-perf'
 
 startRecording()
 // etc.
@@ -42,7 +42,7 @@ startRecording()
 The following example will use ES6 modules and it will be really simple
 
 ```JavaScript
-import { startRecording, startMark, stopMark, stopRecording, allMeasures  } from 'js-performance'
+import { startRecording, startMark, stopMark, stopRecording, allMeasures  } from 'js-perf'
 
 startRecording()
 
@@ -69,7 +69,7 @@ It's easy!
 That means that executing the following code won't work
 
 ```JavaScript
-import { startRecording, startMark, stopMark, stopRecording  } from 'js-performance'
+import { startRecording, startMark, stopMark, stopRecording  } from 'js-perf'
 
 startRecording()
 startMark('operation')
