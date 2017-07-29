@@ -48,8 +48,8 @@ export function endMark (labelToMarkWith) {
 
 /**
  * Gives information is it is possible to use the library
- * @return {[type]} [description]
+ * @return {String?} Reason why the browser doest not support the API
  */
 export function checkSupport () {
-  support()
+  return support()
 }

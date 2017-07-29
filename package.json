@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "cross-env NODE_PATH=./src cross-env NODE_ENV=test ava",
-    "build:prod": "cross-env NODE_PATH=./src cross-env NODE_ENV=production rollup --config rollup.config.prod.js",
+    "build:prod": "cross-env NODE_PATH=./src cross-env NODE_ENV=production rollup --config rollup.config.prod.js && node scripts/genDoc.js",
     "build:dev": "cross-env NODE_PATH=./src cross-env NODE_ENV=development rollup --config rollup.config.dev.js -w",
     "lint:fix": "standard --fix",
     "lint": "standard --verbose | snazzy"
@@ -38,6 +38,7 @@
     "babel-register": "^6.24.1",
     "cross-env": "^5.0.1",
     "jasmine": "^2.6.0",
+    "jsdoc-to-markdown": "^3.0.0",
     "karma": "^1.7.0",
     "rollup": "^0.42.0",
     "rollup-plugin-babel": "^2.7.1",
