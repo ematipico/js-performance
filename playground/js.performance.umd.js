@@ -131,6 +131,11 @@ function allowed() {
 function precise() {
   return typeof window.performance !== 'undefined';
 }
+
+/**
+ * It checks if the browser supports marks
+ * @return {String} Simple string with information about supporting
+ */
 function support() {
   var result = '';
   if (allowed()) {
@@ -145,25 +150,31 @@ function support() {
   }
 }
 
+/**
+ * It starts the trace the marks
+ */
 function startRecording() {
   recordingStart();
 }
 
 /**
- *
+ * It stops tracing the marks
  */
 function stopRecording() {
   recordingStop();
 }
 
+/**
+ * It prints in a table all the measures
+ */
 function allMeasures() {
-  return getMeasures();
+  getMeasures();
 }
 
 /**
- * [mark description]
- * @param  {[type]} labelToMarkWith [description]
- * @return {[type]}                 [description]
+ * It creates a marker
+ * @param  {String} labelToMarkWith The name of the marker
+ * @return {String}                 Dev only, in return the marked label
  */
 function startMark(labelToMarkWith) {
   start(labelToMarkWith);
@@ -173,9 +184,9 @@ function startMark(labelToMarkWith) {
 }
 
 /**
- * [endMark description]
- * @param  {[type]} labelToMarkWith [description]
- * @return {[type]}                 [description]
+ * It creates a marker the ending operation
+ * @param  {String} labelToMarkWith The name of the marker
+ * @return {String}                 Dev only, in return the marked label
  */
 function endMark(labelToMarkWith) {
   stop(labelToMarkWith);
@@ -184,6 +195,10 @@ function endMark(labelToMarkWith) {
   }
 }
 
+/**
+ * Gives information is it is possible to use the library
+ * @return {[type]} [description]
+ */
 function checkSupport() {
   support();
 }
