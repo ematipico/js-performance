@@ -7,6 +7,11 @@ export function allowed () {
 export function precise () {
   return typeof window.performance !== 'undefined'
 }
+
+/**
+ * It checks if the browser supports marks
+ * @return {String} Simple string with information about supporting
+ */
 export function support () {
   let result = ''
   if (allowed()) {

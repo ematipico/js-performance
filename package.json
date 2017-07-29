@@ -6,7 +6,9 @@
   "scripts": {
     "test": "cross-env NODE_PATH=./src cross-env NODE_ENV=test ava",
     "build:prod": "cross-env NODE_PATH=./src cross-env NODE_ENV=production rollup --config rollup.config.prod.js",
-    "build:dev": "cross-env NODE_PATH=./src cross-env NODE_ENV=development rollup --config rollup.config.dev.js -w"
+    "build:dev": "cross-env NODE_PATH=./src cross-env NODE_ENV=development rollup --config rollup.config.dev.js -w",
+    "lint:fix": "standard --fix",
+    "lint": "standard --verbose | snazzy"
   },
   "repository": {
     "type": "git",
@@ -25,7 +27,6 @@
   "devDependencies": {
     "ava": "^0.19.1",
     "babel-core": "^6.24.1",
-    "babel-loader": "^7.0.0",
     "babel-plugin-external-helpers": "^6.22.0",
     "babel-plugin-transform-object-assign": "^6.22.0",
     "babel-plugin-transform-remove-console": "^6.8.3",
@@ -44,6 +45,7 @@
     "rollup-plugin-replace": "^1.1.1",
     "rollup-plugin-uglify": "^2.0.1",
     "rollup-watch": "^4.0.0",
+    "snazzy": "^7.0.0",
     "standard": "^10.0.2",
     "uglify-es": "^3.0.15"
   },
@@ -57,6 +59,10 @@
   "standard": {
     "globals": [
       "performance"
+    ],
+    "ignore": [
+      "*.min.js",
+      "js.performance.*"
     ]
   }
 }

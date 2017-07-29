@@ -7,7 +7,21 @@ import replace from 'rollup-plugin-replace'
 
 export default {
   entry: 'src/index.js',
-  format: 'cjs',
+  targets: [
+    {
+      dest: 'dist/js.performance.es.js', // equivalent to --output
+      format: 'es'
+    },
+    {
+      dest: 'dist/js.performance.umd.js',
+      format: 'umd',
+      moduleName: 'JSPerf'
+    },
+    {
+      dest: 'dist/js.performance.cjs.js', // equivalent to --output
+      format: 'cjs'
+    }
+  ],
   plugins: [
     resolve(),
     babel({
@@ -17,6 +31,5 @@ export default {
     replace({
       'process.env.NODE_ENV': JSON.stringify('production')
     })
-  ],
-  dest: 'dist/js.performance.min.js' // equivalent to --output
+  ]
 }

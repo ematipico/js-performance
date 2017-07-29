@@ -1,44 +1,51 @@
 import { START, STOP } from '../utilities/constants'
+import Marker from './marker'
 
-const labels = {};
-const internalPerformance = {
-  mark (label) {
+let labels = {}
 
-  }
-}
 if (process.env.NODE_ENV !== 'production') {
   // performance =  internalPerformance
 }
 
-export function internalStart  (label) {
+export function internalStart (label) {
+  const startLabel = `${label}-${START}`
   labels[label] = {
-    start: label +'_'+ START
+    start: startLabel
   }
-  performance.mark(label +'_'+ START)
+  performance.mark(startLabel)
 }
 
 export function internalEnd (label) {
-  labels[label]['stop'] = label +'_'+ STOP
-  performance.mark(label +'_'+ STOP)
+  const stopLabel = `${label}-${STOP}`
+  labels[label]['stop'] = stopLabel
+  performance.mark(stopLabel)
 }
 
-export function giveMeAllMeasures() {
+export function giveMeAllMarkers () {
   for (const label in labels) {
-    const originalLabel = labels[label];
-    const startLabel = originalLabel.start;
-    const stopLabel = originalLabel.stop;
+    const originalLabel = labels[label]
+    const startLabel = originalLabel.start
+    const stopLabel = originalLabel.stop
     try {
-      performance.measure(label, startLabel, stopLabel);
+      performance.measure(label, startLabel, stopLabel)
     } catch (e) {
       throw new Error('JS Performance is trying access to marker that does not exist')
     }
-
-
-
-
   }
-  const measures = performance.getEntitiesByType('measure')
+  const measures = performance.getEntriesByType('measure')
 
+  const markers = []
+  for (let measure of measures) {
+    markers.push(new Marker({
+      name: measure.name,
+      duration: measure.duration
+    }))
+  }
+  return markers
+}
 
-  return measures
+export function clearMarkers () {
+  labels = {}
+  performance.clearMarks()
+  performance.clearMeasures()
 }

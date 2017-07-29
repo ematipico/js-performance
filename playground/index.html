@@ -19,19 +19,17 @@
     <script src="js.performance.umd.js"></script>
     <script>
 
-        jsPerf.startRecording()
-        jsPerf.startMark('first')
-        jsPerf.startMark('second')
-        jsPerf.startMark('third')
-        jsPerf.startMark('fourth')
+        JSPerf.startRecording()
+        JSPerf.startMark('first')
+        JSPerf.startMark('second')
+        JSPerf.startMark('third')
+        JSPerf.startMark('fourth')
         setTimeout(function () {
-            jsPerf.endMark('first')
-            jsPerf.endMark('second')
-            jsPerf.endMark('third')
-            jsPerf.endMark('fourth')
-            jsPerf.stopRecording()
-
-            jsPerf.allMeasures()
+            JSPerf.endMark('second')
+            JSPerf.endMark('third')
+            JSPerf.endMark('fourth')
+            JSPerf.stopRecording()
+            JSPerf.allMeasures()
         }, 800)
 
     </script>

@@ -14,7 +14,7 @@ export default {
     {
       dest: 'playground/js.performance.umd.js',
       format: 'umd',
-      moduleName: 'jsPerf',
+      moduleName: 'JSPerf',
       sourceMap: true
     },
     {
@@ -31,5 +31,5 @@ export default {
     replace({
       'process.env.NODE_ENV': JSON.stringify('development')
     })
-  ],
+  ]
 }
