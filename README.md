@@ -12,6 +12,14 @@ The browser API `performance` is useful but it takes a bit to understand the API
 
 The aim of the library is just to give few functions with almost zero learning curve.
 
+## How to install
+
+Just run the following command
+
+```bash
+npm install --save @ematipico/js-performance
+```
+
 ## How to import it
 
 Import the library in the way of prefer most, from your browser
