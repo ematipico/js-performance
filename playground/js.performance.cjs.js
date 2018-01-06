@@ -195,10 +195,10 @@ function endMark(labelToMarkWith) {
 
 /**
  * Gives information is it is possible to use the library
- * @return {[type]} [description]
+ * @return {String?} Reason why the browser doest not support the API
  */
 function checkSupport() {
-  support();
+  return support();
 }
 
 exports.startRecording = startRecording;
@@ -207,4 +207,3 @@ exports.allMeasures = allMeasures;
 exports.startMark = startMark;
 exports.endMark = endMark;
 exports.checkSupport = checkSupport;
-//# sourceMappingURL=js.performance.cjs.js.map

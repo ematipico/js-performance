@@ -15,7 +15,7 @@ export default {
     {
       dest: 'dist/js.performance.umd.js',
       format: 'umd',
-      moduleName: 'JSPerf'
+      name: 'JSPerf'
     },
     {
       dest: 'dist/js.performance.cjs.js', // equivalent to --output

@@ -3,8 +3,8 @@ const fs = require('fs')
 const path = require('path')
 
 /* input and output paths */
-const inputFile = path.resolve(path.join(__dirname, 'src/index.js'))
-const outputDir = __dirname
+const inputFile = path.resolve(path.join(__dirname, '../src/index.js'))
+const outputDir = path.resolve(path.join(__dirname, '../'))
 
 /* get template data */
 const templateData = jsdoc2md.getTemplateDataSync({ files: inputFile })

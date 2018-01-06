@@ -1,7 +1,7 @@
 (function (global, factory) {
 	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
 	typeof define === 'function' && define.amd ? define(['exports'], factory) :
-	(factory((global.JSPerf = global.JSPerf || {})));
+	(factory((global.JSPerf = {})));
 }(this, (function (exports) { 'use strict';
 
 var START = 'START';
@@ -197,10 +197,10 @@ function endMark(labelToMarkWith) {
 
 /**
  * Gives information is it is possible to use the library
- * @return {[type]} [description]
+ * @return {String?} Reason why the browser doest not support the API
  */
 function checkSupport() {
-  support();
+  return support();
 }
 
 exports.startRecording = startRecording;
@@ -213,4 +213,3 @@ exports.checkSupport = checkSupport;
 Object.defineProperty(exports, '__esModule', { value: true });
 
 })));
-//# sourceMappingURL=js.performance.umd.js.map

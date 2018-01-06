@@ -9,18 +9,18 @@ export default {
     {
       dest: 'playground/js.performance.es.js', // equivalent to --output
       format: 'es',
-      sourceMap: true
+      sourcemapFile: true
     },
     {
       dest: 'playground/js.performance.umd.js',
       format: 'umd',
-      moduleName: 'JSPerf',
-      sourceMap: true
+      name: 'JSPerf',
+      sourcemapFile: true
     },
     {
       dest: 'playground/js.performance.cjs.js', // equivalent to --output
       format: 'cjs',
-      sourceMap: true
+      sourcemapFile: true
     }
   ],
   plugins: [

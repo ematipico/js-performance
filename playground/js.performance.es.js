@@ -191,11 +191,10 @@ function endMark(labelToMarkWith) {
 
 /**
  * Gives information is it is possible to use the library
- * @return {[type]} [description]
+ * @return {String?} Reason why the browser doest not support the API
  */
 function checkSupport() {
-  support();
+  return support();
 }
 
 export { startRecording, stopRecording, allMeasures, startMark, endMark, checkSupport };
-//# sourceMappingURL=js.performance.es.js.map
